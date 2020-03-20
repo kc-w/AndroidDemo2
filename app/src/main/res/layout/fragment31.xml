@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:paddingLeft="60dp"
+              android:paddingRight="90dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <TextView
+                android:text="设备"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/gray"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <TextView
+                android:text="连接LIS"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+
+        <Switch
+                android:id="@+id/switch311"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:switchMinWidth="90dp"
+                android:checked="true"
+                android:thumb="@color/switch_selector_thumb_color"
+                android:track="@color/switch_selector_track_color"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <Button
+                android:id="@+id/buttom311"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="连接测试"
+                android:layout_height="30dp"
+                android:layout_width="90dp"
+                android:textColor="@color/blue"
+                android:background="@drawable/button_style1"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <TextView
+                android:text="连接打印机"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+
+        <Switch
+                android:id="@+id/switch312"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:switchMinWidth="90dp"
+                android:checked="true"
+                android:thumb="@color/switch_selector_thumb_color"
+                android:track="@color/switch_selector_track_color"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <Button
+                android:id="@+id/buttom312"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="连接测试"
+                android:layout_height="30dp"
+                android:layout_width="90dp"
+                android:textColor="@color/blue"
+                android:background="@drawable/button_style1"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <TextView
+                android:text="录入样品ID"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+
+        <Switch
+                android:id="@+id/switch313"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:switchMinWidth="90dp"
+                android:checked="true"
+                android:thumb="@color/switch_selector_thumb_color"
+                android:track="@color/switch_selector_track_color"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <TextView
+                android:text="扫描枪"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+
+        <Button
+                android:id="@+id/buttom313"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:text="连接测试"
+                android:layout_height="30dp"
+                android:layout_width="90dp"
+                android:textColor="@color/blue"
+                android:background="@drawable/button_style1"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <TextView
+                android:text="编号"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+        <View
+                android:layout_marginLeft="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="1dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@color/gray"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp">
+
+        <TextView
+                android:text="智能删除"
+                android:textColor="@color/black"
+                android:textSize="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"/>
+
+        <Switch
+                android:id="@+id/switch314"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:switchMinWidth="90dp"
+                android:thumb="@color/switch_selector_thumb_color"
+                android:track="@color/switch_selector_track_color"/>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            android:background="@drawable/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <!-- 侧边导航-->
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="2"
+                    android:layout_height="0dp"
+                    android:gravity="center">
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/f31"
+                    android:layout_width="match_parent"
+                    android:layout_weight="2"
+                    android:layout_height="0dp"
+                    android:gravity="center">
+                <TextView
+                        android:id="@+id/f31t"
+                        android:textColor="@color/text_selector_color"
+                        android:text="系统设置                >"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/f32"
+                    android:layout_width="match_parent"
+                    android:layout_weight="2"
+                    android:layout_height="0dp"
+                    android:gravity="center">
+                <TextView
+                        android:id="@+id/f32t"
+                        android:textColor="@color/text_selector_color"
+                        android:text="个人设置                >"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:id="@+id/f33"
+                    android:layout_width="match_parent"
+                    android:layout_weight="2"
+                    android:layout_height="0dp"
+                    android:gravity="center">
+                <TextView
+                        android:id="@+id/f33t"
+                        android:textColor="@color/text_selector_color"
+                        android:text="关于本机                >"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_weight="14"
+                    android:layout_height="0dp"
+                    android:gravity="center">
+            </RelativeLayout>
+
+        </LinearLayout>
+
+
+        <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/gray" />
+
+        <FrameLayout
+                android:id="@+id/fragment3_content"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/background"
+                android:layout_weight="4">
+            <!-- 存放四个Fragment-->
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

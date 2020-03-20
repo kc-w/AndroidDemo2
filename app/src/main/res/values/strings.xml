@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidDemo2</string>
+
+    <string-array name="spinner_array1">
+        <item>永不休眠</item>
+        <item>10分钟后休眠</item>
+        <item>30分钟后休眠</item>
+        <item>1小时后休眠</item>
+    </string-array>
+
+</resources>

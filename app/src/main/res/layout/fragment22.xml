@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/background"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+
+        <TextView
+                android:layout_marginLeft="50dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="goHome"
+                android:text="返回主菜单"
+                android:textColor="@color/blue"/>
+
+        <TextView
+                android:layout_marginRight="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="over1"
+                android:text="跳过"
+                android:textColor="@color/blue"/>
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:orientation="vertical"
+            android:background="@drawable/background"
+            android:layout_weight="15"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+            <RelativeLayout
+                    android:paddingLeft="15dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/text221"
+                        android:textSize="15dp"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:text="序号:1"/>
+
+                <EditText
+                        android:layout_toRightOf="@+id/text221"
+                        android:layout_centerVertical="true"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:textSize="15dp"
+                        android:layout_centerVertical="true"
+                        android:id="@+id/text222"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ID:"/>
+
+                <EditText
+                        android:id="@+id/edit222"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text222"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:textSize="15dp"
+                        android:id="@+id/text223"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="检测结果:"/>
+
+                <EditText
+                        android:id="@+id/edit223"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text223"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+            <RelativeLayout
+                    android:paddingLeft="15dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/text224"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="检项:"/>
+
+                <EditText
+                        android:id="@+id/edit224"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text224"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_weight="2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+
+                <TextView
+                        android:id="@+id/text225"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:textColor="@color/black"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="参考范围:"/>
+
+                <EditText
+                        android:id="@+id/edit225"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/text225"
+                        android:layout_width="150dp"
+                        android:layout_height="wrap_content"/>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_weight="2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp">
+
+        <TextView
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:text="请扫描一维码"/>
+
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>

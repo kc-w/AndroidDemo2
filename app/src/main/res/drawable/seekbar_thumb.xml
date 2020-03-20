@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 底层背景 -->
+    <item android:id="@android:id/secondaryProgress" android:gravity="center" >
+          <shape android:shape="oval">
+            <size android:width="20dp" android:height="20dp" />
+            <solid android:color="#4FD1DD" />
+        </shape>
+    </item>
+    <!-- 上层覆盖 -->
+    <item android:id="@android:id/background" android:gravity="center">
+        <shape android:shape="oval">
+            <size android:height="10dp" android:width="10dp" />
+            <solid android:color="#03ACC2" />
+        </shape>
+    </item>
+</layer-list>

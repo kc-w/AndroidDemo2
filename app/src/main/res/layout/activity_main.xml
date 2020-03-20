@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context="com.example.androiddemo2.MainActivity">
+    <FrameLayout
+            android:id="@+id/fragment_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        <!-- 存放四个Fragment-->
+    </FrameLayout>
+
+
+
+    <!-- 底部的四个选项菜单-->
+    <LinearLayout
+            android:background="#ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:orientation="horizontal">
+        <!--四个部分都一样：ImageView + TextView-->
+        <RelativeLayout
+                android:id="@+id/rl_first_layout"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center">
+            <ImageView
+                    android:id="@+id/iv_first_home"
+                    android:src="@drawable/record_selector"
+                    android:layout_width="20dp"
+                    android:layout_centerVertical="true"
+                    android:layout_height="20dp" />
+            <TextView
+                    android:id="@+id/tv_first_home"
+                    android:textColor="@color/text_selector_color"
+                    android:text="历史记录"
+                    android:layout_toRightOf ="@+id/iv_first_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_second_layout"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center">
+            <ImageView
+                    android:id="@+id/iv_second_match"
+                    android:src="@drawable/menu_selector"
+                    android:layout_centerVertical="true"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            <TextView
+                    android:id="@+id/tv_second_match"
+                    android:textColor="@color/text_selector_color"
+                    android:text="主菜单"
+                    android:layout_toRightOf ="@+id/iv_second_match"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/main2"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center">
+            <ImageView
+                    android:id="@+id/main21"
+                    android:src="@drawable/detection_selector"
+                    android:layout_centerVertical="true"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            <TextView
+                    android:id="@+id/main22"
+                    android:textColor="@color/text_selector_color"
+                    android:text="快速检测"
+                    android:layout_toRightOf ="@+id/main21"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/main3"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center">
+            <ImageView
+                    android:id="@+id/main31"
+                    android:src="@drawable/detection_selector"
+                    android:layout_centerVertical="true"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            <TextView
+                    android:id="@+id/main32"
+                    android:textColor="@color/text_selector_color"
+                    android:text="标准检测"
+                    android:layout_toRightOf ="@+id/main31"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+                android:id="@+id/rl_third_layout"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:gravity="center">
+            <ImageView
+                    android:id="@+id/iv_third_recommend"
+                    android:src="@drawable/setting_selector"
+                    android:layout_centerVertical="true"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp" />
+            <TextView
+                    android:id="@+id/tv_third_recommend"
+                    android:textColor="@color/text_selector_color"
+                    android:text="设置"
+                    android:layout_toRightOf ="@+id/iv_third_recommend"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:background="@drawable/background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+                android:gravity="center"
+                android:layout_weight="3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/text1"
+                    android:text="编号:"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/edit1"
+                    android:layout_toRightOf="@+id/text1"
+                    android:layout_centerVertical="true"
+                    android:layout_width="70dp"
+                    android:textSize="13dp"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:id="@+id/text11"
+                    android:layout_toRightOf="@+id/edit1"
+                    android:text="到"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/edit11"
+                    android:layout_toRightOf="@+id/text11"
+                    android:layout_centerVertical="true"
+                    android:layout_width="70dp"
+                    android:textSize="13dp"
+                    android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:gravity="center"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/text2"
+                    android:text="ID:"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/edit2"
+                    android:layout_toRightOf="@+id/text2"
+                    android:layout_centerVertical="true"
+                    android:layout_width="80dp"
+                    android:textSize="13dp"
+                    android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:gravity="center"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/text3"
+                    android:text="检项:"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/edit3"
+                    android:layout_toRightOf="@+id/text3"
+                    android:layout_centerVertical="true"
+                    android:layout_width="80dp"
+                    android:textSize="13dp"
+                    android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:gravity="center"
+                android:layout_weight="4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            <TextView
+                    android:id="@+id/text4"
+                    android:text="测试时间:"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/edit4"
+                    android:layout_toRightOf="@+id/text4"
+                    android:layout_centerVertical="true"
+                    android:layout_width="90dp"
+                    android:textSize="13dp"
+                    android:layout_height="wrap_content"/>
+            <TextView
+                    android:id="@+id/text41"
+                    android:layout_toRightOf="@+id/edit4"
+                    android:text="到"
+                    android:textColor="@color/black"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            <EditText
+                    android:id="@+id/edit41"
+                    android:textColor="@color/black"
+                    android:layout_toRightOf="@+id/text41"
+                    android:layout_centerVertical="true"
+                    android:layout_width="90dp"
+                    android:textSize="13dp"
+                    android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+                android:gravity="center"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent">
+
+            <Button
+                    android:id="@+id/submit_select"
+                    android:text="搜索"
+                    android:textColor="@color/blue"
+                    android:background="@drawable/button_style1"
+                    android:layout_centerVertical="true"
+                    android:layout_height="40dp"
+                    android:layout_width="80dp"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_weight="2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:id="@+id/text51"
+                        android:text="编号"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:id="@+id/text52"
+                        android:text="ID"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:id="@+id/text53"
+                        android:text="测试项目"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:id="@+id/text54"
+                        android:text="测试结果"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:id="@+id/text55"
+                        android:text="测试时间"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent">
+                <TextView
+                        android:id="@+id/text56"
+                        android:text="备注"
+                        android:textColor="@color/black"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="20"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+            <ListView
+                    android:id="@+id/ListView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/mLlEditBar"
+                android:visibility="gone"
+                android:orientation="horizontal"
+                android:layout_weight="3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                <Button
+                        android:id="@+id/fragment1_b1"
+                        android:text="取消"
+                        android:textColor="@color/blue"
+                        android:background="@drawable/button_style1"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                <Button
+                        android:id="@+id/fragment1_b2"
+                        android:text="全选"
+                        android:textColor="@color/blue"
+                        android:background="@drawable/button_style1"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                <Button
+                        android:id="@+id/fragment1_b3"
+                        android:text="删除"
+                        android:textColor="@color/blue"
+                        android:background="@drawable/button_style1"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:layout_weight="4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+            </RelativeLayout>
+
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                <Button
+                        android:id="@+id/fragment1_b4"
+                        android:text="上传"
+                        android:textColor="@color/blue"
+                        android:background="@drawable/button_style1"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"/>
+            </RelativeLayout>
+            <RelativeLayout
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content">
+                <Button
+                        android:id="@+id/fragment1_b5"
+                        android:text="打印"
+                        android:textColor="@color/blue"
+                        android:background="@drawable/button_style1"
+                        android:layout_centerVertical="true"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

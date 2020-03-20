@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="800dp"
+            android:layout_height="600dp"
+            android:background="@drawable/dialog1_style"
+            android:orientation="vertical">
+
+
+        <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/mLineChar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

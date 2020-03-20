@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:layout_width="600dp"
+            android:layout_height="400dp"
+            android:background="@drawable/dialog1_style"
+            android:orientation="vertical">
+
+
+            <DatePicker
+                    android:id="@+id/set_Data"
+                    android:theme="@android:style/Theme.Holo.Light"
+                    android:calendarViewShown="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            <TimePicker
+                    android:id="@+id/set_Time"
+                    android:theme="@android:style/Theme.Holo.Light"
+                    android:layout_marginTop="160dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="horizontal">
+
+            <Button
+                    android:id="@+id/dialog3_button1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/black"
+                    android:text="确认"
+                    android:textSize="17dp" />
+
+
+            <Button
+                    android:id="@+id/dialog3_button2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textColor="@color/black"
+                    android:text="取消"
+                    android:textSize="17dp"
+                    android:gravity="center"/>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
