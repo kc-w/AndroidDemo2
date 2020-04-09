@@ -22,9 +22,9 @@ public class Dialog3 extends Dialog {
     private TimePicker timePicker;
 
     //日期设置
-    public static String time1;
+    private String time1;
     //时间设置
-    public static String time2;
+    private String time2;
 
 
 
@@ -58,6 +58,7 @@ public class Dialog3 extends Dialog {
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(year,monthOfYear,dayOfMonth);
                 time1 = year + String.valueOf(monthOfYear+1) + dayOfMonth +"";
+                setTime1(time1);
 
             }
         });
@@ -65,7 +66,8 @@ public class Dialog3 extends Dialog {
         timePicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
             @Override
             public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
-                time2 = hourOfDay+minute+"00";
+                time2 = hourOfDay+""+minute+"00";
+                setTime2(time2);
 
             }
         });
@@ -90,4 +92,19 @@ public class Dialog3 extends Dialog {
         dismiss();
     }
 
+    public String getTime1() {
+        return time1;
+    }
+
+    public void setTime1(String time1) {
+        this.time1 = time1;
+    }
+
+    public String getTime2() {
+        return time2;
+    }
+
+    public void setTime2(String time2) {
+        this.time2 = time2;
+    }
 }

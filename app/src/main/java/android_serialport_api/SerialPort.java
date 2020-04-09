@@ -36,6 +36,7 @@ public class SerialPort {
                 outputStream.close();
                 //等待shell命令执行完成
                 process.waitFor();
+
             } catch (Exception e) {
                 e.printStackTrace();
                 throw new SecurityException();

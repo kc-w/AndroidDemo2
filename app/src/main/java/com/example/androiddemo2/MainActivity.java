@@ -1,12 +1,17 @@
 package com.example.androiddemo2;
 
 
+import android.Manifest;
+import android.app.DownloadManager;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -14,9 +19,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.allenliu.versionchecklib.v2.AllenVersionChecker;
+import com.allenliu.versionchecklib.v2.builder.UIData;
 import com.example.androiddemo2.Bean.MySystem;
 import com.example.androiddemo2.Dialog.Dialog1;
 import com.example.androiddemo2.Fragment.Fragment1;
@@ -55,6 +65,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentManager fragmentManager;
     //对Fragment进行增加删除等操作
     private FragmentTransaction Transaction;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,6 +184,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d("mainActivity", "f3显示");
                 }
                 break;
+
+
         }
 
         //提交事务
@@ -284,7 +298,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         startActivityForResult(intent, 0);
         //创建线程执行休眠
         sleep_treads = new Sleep_Treads();
-        sleep_treads.setTime(10000,policyManager);
+        testCase = new TestCase(this);
+        sleep_treads.setTime(testCase.selectSystem().getSystem2()*1000,policyManager);
+        testCase.close();
         sleep_treads.start();
 
 
@@ -304,12 +320,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             System.out.println("重置休眠时间");
             sleep_treads = new Sleep_Treads();
-            sleep_treads.setTime(10000,policyManager);
+            testCase = new TestCase(this);
+            sleep_treads.setTime(testCase.selectSystem().getSystem2()*1000,policyManager);
+            testCase.close();
             sleep_treads.start();
         }
         return super.onTouchEvent(event);
     }
-
 
 
 

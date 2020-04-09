@@ -85,9 +85,9 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
             e.printStackTrace();
         }
 
-        serialPortUtil = new SerialPortUtil();
-        //开启串口传入串口名,波特率
-        serialPortUtil.openSerialPort("/dev/ttyS0",9600,0);
+//        serialPortUtil = new SerialPortUtil();
+//        //开启串口传入串口名,波特率
+//        serialPortUtil.openSerialPort("/dev/ttyS0",9600,0);
 
     }
 
@@ -112,10 +112,10 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
             case R.id.R21:
 
                 //向下位机发出指令
-                System.out.println("发出十六进制数据");
-                for (int i =0;i<2;i++){
-                    serialPortUtil.sendSerialPort("FE");
-                }
+//                System.out.println("发出十六进制数据");
+//                for (int i =0;i<2;i++){
+//                    serialPortUtil.sendSerialPort("FE");
+//                }
 
                 testCase = new TestCase(getActivity());
                 testCase.insert();

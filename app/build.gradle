@@ -5,11 +5,16 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.androiddemo2"
-        minSdkVersion 28
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    compileOptions{
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     sourceSets {
@@ -36,5 +41,6 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
     implementation 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    implementation 'com.github.AlexLiuSheng:CheckVersionLib:2.2.3'
 
 }

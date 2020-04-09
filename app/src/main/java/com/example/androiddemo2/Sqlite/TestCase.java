@@ -35,9 +35,9 @@ public class TestCase{
     //添加记录
     public void insert(){
         db.execSQL("insert into record (number, id, project, result, time, mark, datas)values(?, ?, ?, ?, ?, ?, ?)",
-                new Object[]{"1", "1", "项目1","通过","2016-01-01","无备注","11,44,55,32,54,25,56,456,23,645,23,456,23,453,23,435"});
+                new Object[]{"1", "1", "项目1","通过","2020-4-1","无备注","11,44,55,32,54,25,56,456,23,645,23,456,23,453,23,435"});
         db.execSQL("insert into record (number, id, project, result, time, mark, datas)values(?, ?, ?, ?, ?, ?, ?)",
-                new Object[]{"2", "2", "项目2","通过","2016-02-02","无备注","81,94,25,32,54,25,56,46,23,45,23,46,23,43,23,35"});
+                new Object[]{"2", "2", "项目2","通过","2000-1-2","无备注","81,94,25,32,54,25,56,46,23,45,23,46,23,43,23,35"});
     }
     //批量记录
     public void delete(List<History> historyList){
@@ -54,6 +54,36 @@ public class TestCase{
         Cursor cursor = db.rawQuery("select id_, number, id, project, result, time, mark from record ", null);
         while(cursor.moveToNext()){
 
+            int id_ = cursor.getInt(0);
+            String number = cursor.getString(1);
+            String id = cursor.getString(2);
+            String project = cursor.getString(3);
+            String result = cursor.getString(4);
+            String time = cursor.getString(5);
+            String mark = cursor.getString(6);
+
+            history = new History();
+            history.setId_(id_);
+            history.setNumber(number);
+            history.setId(id);
+            history.setProject(project);
+            history.setResult(result);
+            history.setTime(time);
+            history.setMark(mark);
+            historyList.add(history);
+
+        }
+        if(cursor != null){
+            cursor.close();
+        }
+        return historyList;
+    }
+
+
+    //自定义sql查询
+    public ArrayList<History> select(String sql){
+        Cursor cursor = db.rawQuery(sql, null);
+        while(cursor.moveToNext()){
             int id_ = cursor.getInt(0);
             String number = cursor.getString(1);
             String id = cursor.getString(2);
@@ -104,6 +134,9 @@ public class TestCase{
         return history;
 
     }
+
+
+
 
 
 

@@ -2,6 +2,10 @@ package com.example.androiddemo2.Fragment;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +20,13 @@ import com.example.androiddemo2.Dialog.Dialog_Chart;
 import com.example.androiddemo2.R;
 import com.example.androiddemo2.Sqlite.TestCase;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.*;
 
 
@@ -269,6 +280,7 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
                 break;
             //上传
             case R.id.fragment1_b4:
+                Uload();
                 break;
             //打印
             case R.id.fragment1_b5:
@@ -295,12 +307,73 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
         String end_number = edit11.getText().toString();
         String id = edit2.getText().toString();
         String jianxiang = edit3.getText().toString();
-        String start_time = edit4.getText().toString();
-        String end_time = edit41.getText().toString();
+        String start_time = edit4.getText().toString().replace("/","-");
+        String end_time = edit41.getText().toString().replace("/","-");
 
+        String sql="select * from record where (1 = 1)";
+
+        if(start_number.equals("") && end_number.equals("") && id.equals("") && jianxiang.equals("") && start_time.equals("") && end_time.equals("")){
+            sql="select * from record";
+        }
+
+        if(!start_number.equals("") && !end_number.equals("")){
+            sql = sql + "and (number between "+start_number+" and "+end_number+")";
+        }else if(start_number.equals("") && !end_number.equals("")){
+            sql = sql + "and (number <= "+end_number+")";
+        }else if (!start_number.equals("") && end_number.equals("")){
+            sql = sql + "and (number >= "+start_number+")";
+        }else {
+        }
+
+        if(!id.equals("")){
+            sql = sql + " and ( id = "+id+")";
+        }
+
+        if (!jianxiang.equals("")){
+            sql = sql + " and ( project = '"+jianxiang+"')";
+        }
+
+        if(!start_time.equals("") && !end_time.equals("")){
+            sql = sql + " and (time between '"+start_time+"' and '"+end_time+"')";
+        }else if(start_time.equals("") && !end_time.equals("")){
+            sql = sql + " and (time <= '"+end_number+"')";
+        }else if (!start_time.equals("") && end_time.equals("")){
+            sql = sql + " and (time >= '"+start_time+"')";
+        }else {
+        }
+
+        System.out.println(sql);
+
+
+        testCase = new TestCase(getActivity());
+        mData = testCase.select(sql);
+        setStateCheckedMap(false);
+        System.out.println(mData.size());
+
+
+        Message message = new Message();
+        message.what = 1;
+        handler.sendMessage(message);
 
 
     }
+
+    final Handler handler = new Handler(){
+        @Override
+        public void handleMessage(Message msg){
+            super.handleMessage(msg);
+            if(msg.what == 1){
+                //存放listview的地方
+                lvData=getActivity().findViewById(R.id.ListView1);
+                initView();
+                adapter = new MyAdapter(getActivity(), mData, stateCheckedMap);
+                lvData.setAdapter(adapter);
+
+            }
+        }
+    };
+
+
 
     //取消全选
     private void cancel() {
@@ -368,6 +441,40 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
                 dialog.dismiss();
             }
         });
+
+    }
+
+    public void Uload(){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String path="http://192.168.0.101:8080/AndroidTest/mustLogin?logname="+"name"+"&password="+"psw";
+                try {
+                    try{
+                        URL url = new URL(path); //新建url并实例化
+                        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                        connection.setRequestMethod("GET");//获取服务器数据
+                        connection.setReadTimeout(8000);//设置读取超时的毫秒数
+                        connection.setConnectTimeout(8000);//设置连接超时的毫秒数
+                        InputStream in = connection.getInputStream();
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+                        String result = reader.readLine();//读取服务器进行逻辑处理后页面显示的数据
+                        Log.d("MainActivity","run: "+result);
+                        if (result.equals("login successfully!")){
+                            Log.d("MainActivity","run2: "+result);
+                            Looper.prepare();
+                            Log.d("MainActivity","run3: "+result);
+                            Toast.makeText(getActivity(),"You logined successfully!",Toast.LENGTH_SHORT).show();
+                            Log.d("MainActivity","run4: "+result);
+                            Looper.loop();
+                        }
+                    }catch (MalformedURLException e){}
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
     }
 

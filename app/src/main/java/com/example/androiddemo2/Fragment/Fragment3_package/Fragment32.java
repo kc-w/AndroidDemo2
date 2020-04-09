@@ -1,5 +1,7 @@
 package com.example.androiddemo2.Fragment.Fragment3_package;
 
+import android.app.AlarmManager;
+import android.content.Intent;
 import android.os.*;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,11 @@ import com.example.androiddemo2.Sqlite.TestCase;
 import com.example.androiddemo2.SystemInfo.Systeminfomation;
 import org.greenrobot.eventbus.EventBus;
 
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.lang.Process;
+
 
 public class Fragment32 extends Fragment implements Runnable{
 
@@ -29,6 +36,9 @@ public class Fragment32 extends Fragment implements Runnable{
     private Button button231;
     private TextView nowtime;
 
+    Dialog3 dialog;
+    String timeString;
+    Boolean isInitial =true;
     private Handler handler;
     private MySystem mySystem;
 
@@ -85,13 +95,12 @@ public class Fragment32 extends Fragment implements Runnable{
 
 
         //读取记录
-        TestCase testCase = new TestCase(getActivity());
+        final TestCase testCase = new TestCase(getActivity());
         mySystem = new MySystem();
         mySystem =testCase.selectSystem();
         //设置屏幕的亮度
         int liangdu = testCase.selectSystem().getSystem1();
         SeekBar321.setProgress(liangdu);
-        testCase.close();
 
         //SeekBar321监听,亮度调节
         SeekBar321.setOnSeekBarChangeListener (new SeekBar.OnSeekBarChangeListener () {
@@ -125,11 +134,28 @@ public class Fragment32 extends Fragment implements Runnable{
         spinner321.setOnItemSelectedListener(new Spinner.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if (isInitial) {
+                    isInitial = false;
+                    return;
+                }
+
                 Toast.makeText(getActivity(), spinner321List[position], Toast.LENGTH_SHORT).show();
-                flag = new Flag();
-                flag.setNo1("sleep");
-                flag.setNo2(spinner321List[position]);
-                EventBus.getDefault().post(flag);
+                switch (spinner321List[position]){
+                    case "10分钟后休眠":
+                        testCase.updateSystem(2,10);
+                        break;
+                    case "20分钟后休眠":
+                        testCase.updateSystem(2,20);
+                        break;
+                    case "30分钟后休眠":
+                        testCase.updateSystem(2,30);
+                        break;
+                    case "60分钟后休眠":
+                        testCase.updateSystem(2,60);
+                        break;
+
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
@@ -173,24 +199,38 @@ public class Fragment32 extends Fragment implements Runnable{
             public void onClick(View v) {
 
                 //系统时间修改弹窗
-                final Dialog3 dialog = new Dialog3(getActivity(),R.style.Dialog1);
+                dialog = new Dialog3(getActivity(),R.style.Dialog1);
                 dialog.show();
                 dialog.setLeftButton("确认", new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        //String datetime="20131023.112800";
-                        if(dialog.time1 == null && dialog.time2 == null){
-
-
-
-                        }else if(dialog.time1 == null && dialog.time2 !=null){
-
-                        }else if(dialog.time1 != null && dialog.time2 == null){
-
-                        }else {
-
+                        if(dialog.getTime1() == null){
+                            timeString="20200420";
+                        }else{
+                            timeString=dialog.getTime1();
                         }
+
+                        if(dialog.getTime2() == null){
+                            timeString = timeString+".64200";
+                        }else {
+                            timeString = timeString+"."+dialog.getTime2();
+                        }
+
+
+
+
+
+
+                        System.out.println("1111111111111");
+
+
+//                        Long times = 1584949562858L;
+//                        SystemClock.setCurrentTimeMillis(times);
+//                        //1584949562858
+//                        System.out.println(timeString);
+//                        startActivity(new Intent(android.provider.Settings.ACTION_DATE_SETTINGS));
+
+
 
                         dialog.dismiss();
                     }
