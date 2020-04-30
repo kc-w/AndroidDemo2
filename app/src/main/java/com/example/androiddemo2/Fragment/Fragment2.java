@@ -20,7 +20,7 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 
-//继承抽象类,实现Fragment,推荐片段
+//继承抽象类,实现Fragment,推荐片段;
 public class Fragment2 extends Fragment implements View.OnClickListener{
 
     //串口操作对象
