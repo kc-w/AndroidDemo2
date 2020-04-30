@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //创建线程执行休眠
         sleep_treads = new Sleep_Treads();
         testCase = new TestCase(this);
-        sleep_treads.setTime(testCase.selectSystem().getSystem2()*1000,policyManager);
+        sleep_treads.setTime(testCase.selectSystem().getSystem2()*100000,policyManager);
         testCase.close();
         sleep_treads.start();
 
@@ -321,7 +321,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             System.out.println("重置休眠时间");
             sleep_treads = new Sleep_Treads();
             testCase = new TestCase(this);
-            sleep_treads.setTime(testCase.selectSystem().getSystem2()*1000,policyManager);
+            sleep_treads.setTime(testCase.selectSystem().getSystem2()*100000,policyManager);
             testCase.close();
             sleep_treads.start();
         }
