@@ -312,7 +312,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //触屏监听
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean dispatchTouchEvent(MotionEvent event) {
         if(event.getAction()==MotionEvent.ACTION_DOWN){
 
             System.out.println("触摸屏幕");
@@ -325,7 +325,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             testCase.close();
             sleep_treads.start();
         }
-        return super.onTouchEvent(event);
+        return super.dispatchTouchEvent(event);
     }
 
 
