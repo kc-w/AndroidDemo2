@@ -22,26 +22,26 @@ public class SerialPort {
     public SerialPort(File device, int baudrate, int flags) throws SecurityException, IOException {
 
 
-        Process process = Runtime.getRuntime().exec("/system/xbin/su");
-
-        //设置操作权限,//手动给权限
-        if (!device.canRead() || !device.canWrite()) {
-            try {
-                String cmd = "chmod 666 " + device.getAbsolutePath() + "\n"+"exit \n";
-                //向安卓写入cmd命令
-                OutputStream outputStream = process.getOutputStream();
-                outputStream.write(cmd.getBytes());
-                //释放输出流
-                outputStream.flush();
-                outputStream.close();
-                //等待shell命令执行完成
-                process.waitFor();
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new SecurityException();
-            }
-        }
+//        Process process = Runtime.getRuntime().exec("/system/xbin/su");
+//
+//        //设置操作权限,//手动给权限
+//        if (!device.canRead() || !device.canWrite()) {
+//            try {
+//                String cmd = "chmod 666 " + device.getAbsolutePath() + "\n"+"exit \n";
+//                //向安卓写入cmd命令
+//                OutputStream outputStream = process.getOutputStream();
+//                outputStream.write(cmd.getBytes());
+//                //释放输出流
+//                outputStream.flush();
+//                outputStream.close();
+//                //等待shell命令执行完成
+//                process.waitFor();
+//
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//                throw new SecurityException();
+//            }
+//        }
 
         System.out.println(device.getAbsolutePath() + "==============================");
 
@@ -73,7 +73,7 @@ public class SerialPort {
 
     static {
         System.out.println("==============================");
-        System.loadLibrary("serial_port");
+        System.loadLibrary("native-lib");
         System.out.println("********************************");
     }
 }

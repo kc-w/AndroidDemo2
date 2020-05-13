@@ -1,5 +1,6 @@
 package com.example.androiddemo2.SerialPort;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +12,16 @@ public class DataUtils {
     //-------------------------------------------------------
     // 判断奇数或偶数，位运算，最后一位是1则为奇数，为0是偶数
     public static int isOdd(int num) {
+        //转化为二进制进行与运算
         return num & 1;
     }
 
+
+
     //-------------------------------------------------------
     //Hex字符串转int
-    public static int HexToInt(String inHex) {
-        return Integer.parseInt(inHex, 16);
+    public static BigInteger HexToInt(String inHex) {
+        return new BigInteger(inHex, 16);
     }
 
     public static String IntToHex(int intHex){
@@ -57,7 +61,6 @@ public class DataUtils {
         }
         return strBuilder.toString();
     }
-
     //-------------------------------------------------------
     //转hex字符串转字节数组
     public static byte[] HexToByteArr(String inHex) {
@@ -77,7 +80,6 @@ public class DataUtils {
         }
         return result;
     }
-
     /**
      * 按照指定长度切割字符串
      *
@@ -119,22 +121,40 @@ public class DataUtils {
         return val;
     }
 
+    //整数转换数组,从低位到高位位数据转换(数据,字节数)
+    public static byte[] InttoLH(int num,int i){
+
+        byte[] b = new byte[i];
+        for(int j=0;j<i;j++){
+            b[j] = (byte)(num >>j*8 & 0xff);
+        }
+
+        return b;
+    }
+    //高低位2字节转换成整数(高位,低位)
+    public static int HLtoInt(int a,int b){
+
+        int value= (a<< 8) | (b & 0xFF);
+
+        return value;
+    }
+
     /**
      * 校验和
      *
      * @param cmd 指令
      * @return 结果
      */
-    public static String sum(String cmd) {
-        List<String> cmdList = DataUtils.getDivLines(cmd, 2);
-        int sumInt = 0;
-        for (String c : cmdList) {
-            sumInt += DataUtils.HexToInt(c);
-        }
-        String sum = DataUtils.IntToHex(sumInt);
-        sum = DataUtils.twoByte(sum);
-        cmd += sum;
-        return cmd.toUpperCase();
-    }
+//    public static String sum(String cmd) {
+//        List<String> cmdList = DataUtils.getDivLines(cmd, 2);
+//        int sumInt = 0;
+//        for (String c : cmdList) {
+//            sumInt += DataUtils.HexToInt(c);
+//        }
+//        String sum = DataUtils.IntToHex(sumInt);
+//        sum = DataUtils.twoByte(sum);
+//        cmd += sum;
+//        return cmd.toUpperCase();
+//    }
 
 }

@@ -14,9 +14,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.androiddemo2.Fragment.Fragment2_package.Fragment21;
 import com.example.androiddemo2.Fragment.Fragment2_package.Fragment22;
 import com.example.androiddemo2.R;
+import com.example.androiddemo2.SerialPort.DataUtils;
 import com.example.androiddemo2.SerialPort.SerialPortUtil;
 import com.example.androiddemo2.Sqlite.TestCase;
-import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
 
@@ -87,7 +87,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
 
         serialPortUtil = new SerialPortUtil();
         //开启串口传入串口名,波特率
-        serialPortUtil.openSerialPort("/dev/ttyS0",9600,0);
+        serialPortUtil.openSerialPort("/dev/ttyS1",9600,0);
 
     }
 
@@ -110,12 +110,46 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
         //获取当前点击的按钮
         switch (v.getId()) {
             case R.id.R21:
-//
-                //向下位机发出指令
-//                System.out.println("发出十六进制数据");
-//                for (int i =0;i<2;i++){
-//                    serialPortUtil.sendSerialPort("FE");
-//                }
+
+
+                Log.d("MainActivity", "发出命令 ");
+
+//                serialPortUtil.sendRecord();
+
+
+
+//                //发送系统参数
+                serialPortUtil.sendSerialPort("0219001A");
+                //keyword
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(100000,4));
+                //EnIDcount
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(0,2));
+                //Start_pos
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(1390,2));
+                //WinWidth
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(80,2));
+                //TestStep
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(-700,2));
+                //MoveSpeed
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(90,2));
+                //TestSpeed
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(160,2));
+                //MaxStep
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(12000,2));
+                //Bak
+                serialPortUtil.sendSerialPort(DataUtils.InttoLH(0,2));
+
+                serialPortUtil.sendSerialPort("03");
+
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+                serialPortUtil.sendSerialPort("0205001603");
+
+
 
                 testCase = new TestCase(getActivity());
                 testCase.insert();
