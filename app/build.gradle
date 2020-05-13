@@ -56,5 +56,4 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.0.0'
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
     implementation 'com.github.AlexLiuSheng:CheckVersionLib:2.2.3'
-    implementation 'com.mysugr.MPAndroidChart:MPAndroidChart:3.1.0-mysugr-1'
 }
