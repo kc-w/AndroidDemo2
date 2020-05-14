@@ -336,13 +336,14 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
         if(!start_time.equals("") && !end_time.equals("")){
             sql = sql + " and (time between '"+start_time+"' and '"+end_time+"')";
         }else if(start_time.equals("") && !end_time.equals("")){
-            sql = sql + " and (time <= '"+end_number+"')";
+            sql = sql + " and (time <= '"+end_time+"')";
         }else if (!start_time.equals("") && end_time.equals("")){
             sql = sql + " and (time >= '"+start_time+"')";
         }else {
+
         }
 
-        System.out.println(sql);
+        Log.d(getClass().getSimpleName(), sql);
 
 
         testCase = new TestCase(getActivity());
@@ -364,8 +365,6 @@ public class Fragment1 extends Fragment implements View.OnClickListener{
             super.handleMessage(msg);
             if(msg.what == 1){
                 //存放listview的地方
-                lvData=getActivity().findViewById(R.id.ListView1);
-                initView();
                 adapter = new MyAdapter(getActivity(), mData, stateCheckedMap);
                 lvData.setAdapter(adapter);
 

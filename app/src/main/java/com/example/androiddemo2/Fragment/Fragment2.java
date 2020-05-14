@@ -1,11 +1,14 @@
 package com.example.androiddemo2.Fragment;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import android_serialport_api.SendData;
 import android_serialport_api.SerialPortFinder;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -77,17 +80,6 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
         fragmentManager = getFragmentManager();
 
 
-        //获取可用串口
-        try {
-            SerialPortFinder prot = new SerialPortFinder();
-            prot.getAllDevicesPath();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        serialPortUtil = new SerialPortUtil();
-        //开启串口传入串口名,波特率
-        serialPortUtil.openSerialPort("/dev/ttyS1",9600,0);
 
     }
 
@@ -109,46 +101,25 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
 
         //获取当前点击的按钮
         switch (v.getId()) {
+            //快速检测
             case R.id.R21:
+                ProgressDialog progressDialog = new ProgressDialog(getActivity());
+
+                progressDialog.setTitle("完成进度条");
+                progressDialog.setMessage("Loading・・・");
+                progressDialog.setCancelable(false);
+                progressDialog.show();
 
 
-                Log.d("MainActivity", "发出命令 ");
 
-//                serialPortUtil.sendRecord();
-
-
-
-//                //发送系统参数
-                serialPortUtil.sendSerialPort("0219001A");
-                //keyword
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(100000,4));
-                //EnIDcount
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(0,2));
-                //Start_pos
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(1390,2));
-                //WinWidth
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(80,2));
-                //TestStep
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(-700,2));
-                //MoveSpeed
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(90,2));
-                //TestSpeed
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(160,2));
-                //MaxStep
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(12000,2));
-                //Bak
-                serialPortUtil.sendSerialPort(DataUtils.InttoLH(0,2));
-
-                serialPortUtil.sendSerialPort("03");
 
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
 
-                serialPortUtil.sendSerialPort("0205001603");
-
+                SendData.fast_check();
 
 
                 testCase = new TestCase(getActivity());
@@ -159,17 +130,15 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
                 r2.setVisibility(View.VISIBLE);
                 r2.setSelected(true);
 
-                if (f21 == null) {
-                    //创建f21对象
-                    f21 = new Fragment21();
-                    //通过事务将f21添加到mainFragment
-                    Transaction.add(R.id.fragment_content, f21,"f21");
-                    Log.d("Fragment2", "f21首次添加显示");
-                } else {
-                    //显示隐藏的f21
-                    Transaction.show(f21);
-                    Log.d("Fragment2", "f21显示");
+                if (f21!=null){
+                    Transaction.remove(f21);
                 }
+                //创建f21对象
+                f21 = new Fragment21();
+                //通过事务将f21添加到mainFragment
+                Transaction.add(R.id.fragment_content, f21,"f21");
+                Log.d("Fragment2", "f21添加显示");
+
                 break;
 
             case R.id.R22:

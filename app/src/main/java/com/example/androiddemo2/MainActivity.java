@@ -33,8 +33,20 @@ import com.example.androiddemo2.Fragment.Fragment1;
 import com.example.androiddemo2.Fragment.Fragment2;
 import com.example.androiddemo2.Fragment.Fragment3;
 import com.example.androiddemo2.Receiver.ScreenOffAdminReceiver;
+import com.example.androiddemo2.SerialPort.DataUtils;
+import com.example.androiddemo2.SerialPort.SerialPortUtil;
 import com.example.androiddemo2.Sqlite.TestCase;
 import com.example.androiddemo2.Treads.Sleep_Treads;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Map;
+
+import android_serialport_api.SendData;
+import android_serialport_api.SerialPortFinder;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -58,6 +70,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout buttom3;
 
     private View view;
+
+
 
 
 
@@ -85,9 +99,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //初始化系统设置
         initSystem();
 
-
+        //开启串口,初始化参数
+        SendData.open();
 
     }
+
 
 
     private void initView() {
@@ -228,6 +244,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
     //返回主菜单
     public void goHome(View v){
 
@@ -304,7 +321,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         sleep_treads.start();
 
 
+
+
+
     }
+
+
+
 
 
 

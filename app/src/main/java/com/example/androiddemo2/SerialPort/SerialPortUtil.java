@@ -121,7 +121,6 @@ public class SerialPortUtil {
 
 
 
-    Bundle bundle = new Bundle();
 
     //存放缓冲区读取到的数据
     byte[] readData = new byte[1024];
