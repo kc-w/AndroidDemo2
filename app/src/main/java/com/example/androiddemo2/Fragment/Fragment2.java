@@ -2,11 +2,14 @@ package com.example.androiddemo2.Fragment;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import android_serialport_api.SendData;
 import android_serialport_api.SerialPortFinder;
@@ -22,6 +25,7 @@ import com.example.androiddemo2.SerialPort.SerialPortUtil;
 import com.example.androiddemo2.Sqlite.TestCase;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 //继承抽象类,实现Fragment,推荐片段;
 public class Fragment2 extends Fragment implements View.OnClickListener{
@@ -105,20 +109,35 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
             case R.id.R21:
                 ProgressDialog progressDialog = new ProgressDialog(getActivity());
 
-                progressDialog.setTitle("完成进度条");
+//                progressDialog.setTitle("完成进度条");
                 progressDialog.setMessage("Loading・・・");
                 progressDialog.setCancelable(false);
                 progressDialog.show();
 
 
+                final Handler handler = new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        super.handleMessage(msg);
+
+                            if (msg.what == 1) {
+                                Bundle bundle = msg.getData();
+                                ArrayList date=(ArrayList)bundle.get("shuju");
+                                Log.e("TAG", date.toString());
+                                progressDialog.dismiss();
+                            }
+                            if (msg.what == 2) {
+                                Toast.makeText(getActivity(),"数据检测错误!",Toast.LENGTH_LONG).show();
+                                progressDialog.dismiss();
+                            }
+                    }
+                };
+
+                //传递handler
+                SerialPortUtil.setHandler(handler);
 
 
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+                //向串口发出快速检测命令
                 SendData.fast_check();
 
 
@@ -143,8 +162,6 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
 
             case R.id.R22:
 
-                //向下位机发出指令
-                serialPortUtil.sendSerialPort("EF");
 
                 //显示隐藏的导航栏
                 r3.setVisibility(View.VISIBLE);

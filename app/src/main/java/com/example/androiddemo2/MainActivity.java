@@ -132,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Transaction.add(R.id.fragment_content, f1,"f1");
         Log.d("mainActivity", "f1默认初始化显示");
 
+
         //提交当前事务
         Transaction.commit();
     }
