@@ -115,7 +115,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
                 progressDialog.show();
 
 
-                final Handler handler = new Handler() {
+                final  Handler handler = new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
                         super.handleMessage(msg);
@@ -123,7 +123,7 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
                             if (msg.what == 1) {
                                 Bundle bundle = msg.getData();
                                 ArrayList date=(ArrayList)bundle.get("shuju");
-                                Log.e("TAG", date.toString());
+                                Toast.makeText(getActivity(),date.toString(),Toast.LENGTH_LONG).show();
                                 progressDialog.dismiss();
                             }
                             if (msg.what == 2) {

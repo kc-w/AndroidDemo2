@@ -53,6 +53,9 @@ public class Fragment21 extends Fragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void EventMainThread(String readInt){
         Log.d(TAG,"获取到了从传感器发送到Android主板的串口数据");
+
+
+
         edit = getActivity().findViewById(R.id.edit212);
         edit.setText(readInt);
     }

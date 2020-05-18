@@ -136,6 +136,29 @@
                     android:layout_height="wrap_content"/>
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/debug"
+
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/iv_debug"
+                android:src="@drawable/debug_selector"
+                android:layout_centerVertical="true"
+                android:layout_width="20dp"
+                android:layout_height="20dp" />
+            <TextView
+                android:id="@+id/tv_debug"
+                android:textColor="@color/text_selector_color"
+                android:text="快速检测"
+                android:layout_toRightOf ="@+id/iv_debug"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
+
 
     </LinearLayout>
 

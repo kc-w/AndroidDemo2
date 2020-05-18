@@ -30,7 +30,7 @@ public class SendData {
         serialPortUtil.openSerialPort("/dev/ttyS1",9600,0);
 
 
-        //发送系统参数
+        //发送系统参数共25个字节
         serialPortUtil.sendSerialPort("0219001A");
         //keyword
         serialPortUtil.sendSerialPort(DataUtils.InttoLH(100000,4));

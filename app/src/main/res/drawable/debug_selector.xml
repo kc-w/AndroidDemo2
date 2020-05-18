@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--图标选择器-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/debug_true" android:state_selected="true" />
+    <item android:drawable="@drawable/debug_flase" />
+</selector>

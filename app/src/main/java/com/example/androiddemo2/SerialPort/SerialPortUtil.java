@@ -157,7 +157,7 @@ public class SerialPortUtil {
             for (int i=0;i<size;i++){
                 SendData.add(readDatum[i]);
             }
-            Log.d(TAG, "添加数据执行 "+SendData.toString());
+            Log.d(TAG, "添加数据执行"+SendData.toString());
         }
         public  void subtract(int i) {
 
@@ -218,14 +218,14 @@ public class SerialPortUtil {
             while (true){
 
                 while (checkFlag){
+                    for (int i=0;i<50;i++){
 
-                    for (int i=0;i<100;i++){
                         try {
                             Thread.sleep(100);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-
+                        Log.e(String.valueOf(i), data_class.size+"  "+(data_class.getData().size() ));
                         if (data_class.getData().size()==data_class.size){
                             if (data_class.getData().size()>10){
                                 message(1,"shuju",data_class.getData());
@@ -239,16 +239,22 @@ public class SerialPortUtil {
                             checkFlag=false;
                             break;
                         }
-                        if (i==100){
-                            if (data_class.getData().size()!=0 && data_class.getData().size()!=data_class.size){
+
+                        if (i==49){
+                            if (data_class.getData().size()==0 || data_class.getData().size()!=data_class.size){
+                                try {
+                                    Thread.sleep(1000);
+                                } catch (InterruptedException e) {
+                                    e.printStackTrace();
+                                }
                                 message(2,"shuju",data_class.getData());
                                 data_class.clear();
                                 checkFlag=false;
+                                break;
                             }
                         }
-
                     }
-
+                    checkFlag=false;
                 }
 
             }
@@ -297,12 +303,13 @@ public class SerialPortUtil {
                                 if (data_class.size==data_class.getData().size()){
 
                                     if(sendDate.get(i)==3){
+                                        //data_class添加数据
+                                        data_class.subtract(i);
                                         try {
                                             Thread.sleep(1000);
                                         } catch (InterruptedException e) {
                                             e.printStackTrace();
                                         }
-                                        data_class.subtract(i);
                                         flag=true;
                                         isStart=true;
                                         continue;
