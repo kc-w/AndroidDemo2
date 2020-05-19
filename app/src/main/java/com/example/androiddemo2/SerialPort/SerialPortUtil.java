@@ -4,6 +4,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+
+import com.example.androiddemo2.MainActivity;
+
 import android_serialport_api.SerialPort;
 
 import java.io.File;
@@ -127,9 +130,6 @@ public class SerialPortUtil {
     //存放缓冲区读取到的数据
     byte[] readData = new byte[1024];
 
-
-
-
     public class Data_class {
         int size=0;
         //存放缓冲区的数据
@@ -225,10 +225,14 @@ public class SerialPortUtil {
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        Log.e(String.valueOf(i), data_class.size+"  "+(data_class.getData().size() ));
+
+
+
                         if (data_class.getData().size()==data_class.size){
                             if (data_class.getData().size()>10){
                                 message(1,"shuju",data_class.getData());
+
+
                             }
                             try {
                                 Thread.sleep(1000);
@@ -313,6 +317,8 @@ public class SerialPortUtil {
                                         flag=true;
                                         isStart=true;
                                         continue;
+                                    }else {
+
                                     }
 
                                 }

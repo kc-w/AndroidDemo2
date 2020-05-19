@@ -12,12 +12,16 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -39,6 +43,7 @@ import com.example.androiddemo2.Sqlite.TestCase;
 import com.example.androiddemo2.Treads.Sleep_Treads;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -68,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout buttom21;
     private RelativeLayout buttom22;
     private RelativeLayout buttom3;
+
+    private RelativeLayout buttom111;
 
     private View view;
 
@@ -102,8 +109,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //开启串口,初始化参数
         SendData.open();
 
-    }
 
+
+
+
+    }
 
 
     private void initView() {
@@ -121,6 +131,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttom21.setOnClickListener(this);
         buttom22.setOnClickListener(this);
         buttom3.setOnClickListener(this);
+
+        buttom111 = findViewById(R.id.R21);
+        buttom111.setOnClickListener(this);
 
 
         //默认第一个首页被选中高亮显示
@@ -201,6 +214,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d("mainActivity", "f3显示");
                 }
                 break;
+
+            case R.id.R21:
+                Log.e(TAG, "onClick: 111111111111111111111111111" );
 
 
         }
@@ -351,6 +367,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.dispatchTouchEvent(event);
     }
+
+
+
+
 
 
 
