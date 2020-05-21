@@ -76,7 +76,7 @@ Java_android_1serialport_1api_SerialPort_open
         jboolean iscopy;
         const char *path_utf = env->GetStringUTFChars( path, &iscopy);
         //读取数据是阻塞的,加上 O_NDELAY 参数，读取数据是异步的
-        fd = open(path_utf, O_RDWR | flags);
+        fd = open(path_utf, O_RDWR | flags | O_NONBLOCK | O_NOCTTY | O_NDELAY);
         env->ReleaseStringUTFChars( path, path_utf);
         if (fd == -1) {
             return NULL;

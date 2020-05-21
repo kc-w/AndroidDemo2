@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 //继承抽象类,实现Fragment,推荐片段;
-public class Fragment2 extends Fragment implements View.OnClickListener{
+public class Fragment2 extends Fragment implements View.OnClickListener {
 
     //串口操作对象
     private SerialPortUtil serialPortUtil;
@@ -84,8 +84,9 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
         fragmentManager = getFragmentManager();
 
 
-
     }
+
+
 
     @Override
     public void onClick(View v) {
@@ -108,47 +109,32 @@ public class Fragment2 extends Fragment implements View.OnClickListener{
             //快速检测
             case R.id.R21:
                 ProgressDialog progressDialog = new ProgressDialog(getActivity());
-
-//                progressDialog.setTitle("完成进度条");
                 progressDialog.setMessage("Loading・・・");
                 progressDialog.setCancelable(false);
                 progressDialog.show();
 
-
-                final  Handler handler = new Handler() {
-                    @Override
-                    public void handleMessage(Message msg) {
-                        super.handleMessage(msg);
-
-                            if (msg.what == 1) {
-                                Bundle bundle = msg.getData();
-                                ArrayList date=(ArrayList)bundle.get("shuju");
-                                Toast.makeText(getActivity(),date.toString(),Toast.LENGTH_LONG).show();
-                                progressDialog.dismiss();
-                            }
-                            if (msg.what == 2) {
-                                Toast.makeText(getActivity(),"数据检测错误!",Toast.LENGTH_LONG).show();
-                                progressDialog.dismiss();
-                            }
+                Thread thread = new Thread() {
+                    public void run() {
+                        try {
+                            SendData.fast_check();
+                            progressDialog.dismiss();
+                        } catch (InterruptedException | IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 };
 
-                //传递handler
-                SerialPortUtil.setHandler(handler);
 
-
-                //向串口发出快速检测命令
-                SendData.fast_check();
-
+                thread.start();
 
                 testCase = new TestCase(getActivity());
                 testCase.insert();
                 testCase.close();
 
-                //显示隐藏的导航栏
+                //显示快速检测导航栏
                 r2.setVisibility(View.VISIBLE);
                 r2.setSelected(true);
-
+                //如果快速检测页面已存在，就从fragment管理器中删除
                 if (f21!=null){
                     Transaction.remove(f21);
                 }

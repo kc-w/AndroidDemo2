@@ -12,12 +12,17 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.os.PowerManager;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -34,11 +39,11 @@ import com.example.androiddemo2.Fragment.Fragment2;
 import com.example.androiddemo2.Fragment.Fragment3;
 import com.example.androiddemo2.Receiver.ScreenOffAdminReceiver;
 import com.example.androiddemo2.SerialPort.DataUtils;
-import com.example.androiddemo2.SerialPort.SerialPortUtil;
 import com.example.androiddemo2.Sqlite.TestCase;
 import com.example.androiddemo2.Treads.Sleep_Treads;
 
 import java.io.IOException;
+import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -68,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout buttom21;
     private RelativeLayout buttom22;
     private RelativeLayout buttom3;
+
 
     private View view;
 
@@ -100,10 +106,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initSystem();
 
         //开启串口,初始化参数
-        SendData.open();
+        try {
+            SendData.open();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
 
     }
-
 
 
     private void initView() {
@@ -123,14 +135,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttom3.setOnClickListener(this);
 
 
+
         //默认第一个首页被选中高亮显示
         buttom1.setSelected(true);
         //开启一个事务，用于Fragment的一系列处理
         Transaction = fragmentManager.beginTransaction();
         //将mainFragment的内容替换为Fragment1
         f1 = new Fragment1();
+
         Transaction.add(R.id.fragment_content, f1,"f1");
         Log.d("mainActivity", "f1默认初始化显示");
+
 
 
         //提交当前事务
@@ -186,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 buttom22.setSelected(true);
                 Transaction.show(f22);
                 Log.d("mainActivity", "f22显示");
-
                 break;
             //设置
             case R.id.rl_third_layout:
@@ -201,6 +215,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Log.d("mainActivity", "f3显示");
                 }
                 break;
+
+            case R.id.R21:
+                Log.e(TAG, "onClick: 111111111111111111111111111" );
 
 
         }
@@ -246,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    //返回主菜单
+    //快速检测页面返回主菜单
     public void goHome(View v){
 
         Transaction = fragmentManager.beginTransaction();
@@ -351,6 +368,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.dispatchTouchEvent(event);
     }
+
+
+
+
 
 
 
