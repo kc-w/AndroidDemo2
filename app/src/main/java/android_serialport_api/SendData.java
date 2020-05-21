@@ -13,7 +13,7 @@ public class SendData {
     private static SerialPortUtil serialPortUtil;
 
 
-    public static void open(){
+    public static void open() throws IOException, InterruptedException {
 
 
 
@@ -26,12 +26,16 @@ public class SendData {
         }
 
         serialPortUtil = new SerialPortUtil();
-        //开启串口传入串口名,波特率
+        //开启串口传入串口名,波特率,校验
         serialPortUtil.openSerialPort("/dev/ttyS1",9600,0);
 
-
-        //发送系统参数共25个字节
-        serialPortUtil.sendSerialPort("0219001A");
+        //发送系统参数共
+        byte[] b1=new byte[4];
+        b1[0]=(byte)Integer.parseInt("02", 16);
+        b1[1]=(byte)Integer.parseInt("19", 16);
+        b1[2]=(byte)Integer.parseInt("00", 16);
+        b1[3]=(byte)Integer.parseInt("1A", 16);
+        serialPortUtil.sendSerialPort(b1);
         //keyword
         serialPortUtil.sendSerialPort(DataUtils.InttoLH(100000,4));
         //EnIDcount
@@ -53,12 +57,11 @@ public class SendData {
 
         serialPortUtil.sendSerialPort("03");
 
-
     }
 
 
     //快速检测
-    public static void fast_check(){
+    public static void fast_check() throws IOException, InterruptedException {
         Log.d("SendData", "发出快速检测命令 ");
         serialPortUtil.sendSerialPort("0205001603");
 

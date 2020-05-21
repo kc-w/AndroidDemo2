@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -38,7 +39,6 @@ import com.example.androiddemo2.Fragment.Fragment2;
 import com.example.androiddemo2.Fragment.Fragment3;
 import com.example.androiddemo2.Receiver.ScreenOffAdminReceiver;
 import com.example.androiddemo2.SerialPort.DataUtils;
-import com.example.androiddemo2.SerialPort.SerialPortUtil;
 import com.example.androiddemo2.Sqlite.TestCase;
 import com.example.androiddemo2.Treads.Sleep_Treads;
 
@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private RelativeLayout buttom22;
     private RelativeLayout buttom3;
 
-    private RelativeLayout buttom111;
 
     private View view;
 
@@ -107,10 +106,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initSystem();
 
         //开启串口,初始化参数
-        SendData.open();
-
-
-
+        try {
+            SendData.open();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
 
     }
@@ -132,8 +134,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         buttom22.setOnClickListener(this);
         buttom3.setOnClickListener(this);
 
-        buttom111 = findViewById(R.id.R21);
-        buttom111.setOnClickListener(this);
 
 
         //默认第一个首页被选中高亮显示
@@ -142,8 +142,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Transaction = fragmentManager.beginTransaction();
         //将mainFragment的内容替换为Fragment1
         f1 = new Fragment1();
+
         Transaction.add(R.id.fragment_content, f1,"f1");
         Log.d("mainActivity", "f1默认初始化显示");
+
 
 
         //提交当前事务
@@ -199,7 +201,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 buttom22.setSelected(true);
                 Transaction.show(f22);
                 Log.d("mainActivity", "f22显示");
-
                 break;
             //设置
             case R.id.rl_third_layout:
@@ -262,7 +263,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    //返回主菜单
+    //快速检测页面返回主菜单
     public void goHome(View v){
 
         Transaction = fragmentManager.beginTransaction();
